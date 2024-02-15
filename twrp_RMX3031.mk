@@ -16,26 +16,30 @@
 # limitations under the License.
 #
 
-# Release name
-PRODUCT_RELEASE_NAME := RMX3031
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
-# Inherit from RMX3031 device
-$(call inherit-product, device/realme/RMX3031/device.mk)
-
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/pb/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 PRODUCT_DEVICE := RMX3031
 PRODUCT_NAME := twrp_RMX3031
 PRODUCT_BRAND := Realme
-PRODUCT_MODEL := X7 Max
+PRODUCT_MODEL := Realme x7 Max
 PRODUCT_MANUFACTURER := Realme
+
+# Dynamic
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# fastbootd
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
 
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31 \
     ro.bootimage.build.date.utc=0 \
+    ro.build.date.utc=0
