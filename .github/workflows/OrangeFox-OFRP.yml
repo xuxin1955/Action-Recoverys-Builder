@@ -19,19 +19,19 @@ on:
       DEVICE_TREE:
         description: 'Custom Recovery Tree'
         required: true
-        default: 'https://github.com/lazycodebuilder/recovery_rmx1851'
+        default: 'https://github.com/yuxuxin233/Action-Recoverys-Builder'
       DEVICE_TREE_BRANCH:
         description: 'Custom Recovery Tree Branch'
         required: true
-        default: 'android-14_ofrp'
+        default: 'main'
       DEVICE_PATH:
         description: 'Specify your device path.'
         required: true
-        default: 'device/realme/RMX1851'
+        default: 'device/realme/RMX3031'
       DEVICE_NAME:
         description: 'Specify your Device Codename.'
         required: true
-        default: 'RMX1851'
+        default: 'RMX3031'
       BUILD_TARGET:
         description: 'Specify your Build Target'
         required: true
@@ -80,7 +80,7 @@ jobs:
     - name: Swap Space
       uses: pierotofy/set-swap-space@master
       with:
-        swap-size-gb: 12
+        swap-size-gb: 14
       
     - name: Build Environment
       run: |
